@@ -1,0 +1,5 @@
+10.4.2018 JOBE
+-----
+Security: Changed registration, login, database and cookiehandling to use hashed (SHA512) password information instead of plain text passwords.
+Administration: Created a language editor to add and change language database records. (admin_languages.php - set language admin password in config/config.php)
+Layout: added (empty) new.css file in /templates/classic/styles to move style information out of the .php files
