@@ -456,7 +456,7 @@ else
         {
             echo "<strong>Link editor</strong>";
         }
-        elseif ($module == "zoneedit")
+		elseif ($module == "zoneedit")
         {
             echo "<strong>Zone editor</strong>";
             echo "<br>";

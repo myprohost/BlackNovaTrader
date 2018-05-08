@@ -26,6 +26,26 @@ if (checklogin () )
 global $l_opt2_title;
 $title = $l_opt2_title;
 
+if ($debug) {
+echo $oldpass . " <-- oldpass </br>";
+echo $newpass1 . " <-- newpass1  </br>";
+echo $newpass2 . " <-- newpass2 </br>";
+echo $password . " <-- password </br>";
+echo "</br>";
+}
+
+$oldpass = hash('SHA512', $oldpass);
+$newpass1 = hash('SHA512', $newpass1);
+$newpass2 = hash('SHA512', $newpass2);
+
+if ($debug) {
+echo $oldpass . " <-- oldpass </br>";
+echo $newpass1 . " <-- newpass1  </br>";
+echo $newpass2 . " <-- newpass2 </br>";
+echo $password . " <-- password </br>";
+echo "</br>";
+}
+
 if ($newpass1 == $newpass2 && $password == $oldpass && $newpass1 != "")
 {
     $userpass = $username."+".$newpass1;

@@ -691,7 +691,7 @@ else
     echo "</td></tr></table>";
 }
 ?>
-<br>
+
 <td style='width:200px; vertical-align:top;'>
 
 <?php

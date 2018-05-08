@@ -31,14 +31,14 @@ $dbport = "";
 $ADODB_SESSION_CONNECT = "127.0.0.1";
 
 // Username and password to connect to the database:
-$ADODB_SESSION_USER = "bnt";
-$ADODB_SESSION_PWD = "bnt";
+$ADODB_SESSION_USER = "db_user";
+$ADODB_SESSION_PWD = "db_password";
 
 // Name of the SQL database:
-$ADODB_SESSION_DB = "bnt";
+$ADODB_SESSION_DB = "db_name";
 
 // Define a random crypto key for ADOdb to use for encrypted sessions.
-$ADODB_CRYPT_KEY = "ptjsiaanxyhdhjz";
+$ADODB_CRYPT_KEY = "enter_random_key_here";
 
 // Type of the SQL database. This can be anything supported by ADOdb. Here are a few:
 // "access" for MS Access databases. You need to create an ODBC DSN.
@@ -76,10 +76,10 @@ $db_prefix = "bnt_";
 // if you get weird errors with cookies then make sure the game domain has TWO dots
 // i.e. if you reside your game on http://www.blacknova.net put .blacknova.net as $gamedomain.
 // If your game is on http://www.some.site.net put .some.site.net as your game domain. Do not put port numbers in $gamedomain.
-// $gamedomain = "";
+$gamedomain = ".set.correct.game.domain.here";
 
 // This is the trailing part of the URL, that is not part of the domain.
 // If you enter www.blah.com/blacknova to access the game, you would leave the line as it is.
 // If you do not need to specify blacknova, just enter a single slash eg:
-// $gamepath = "/bnt/";
+$gamepath = "/";
 ?>

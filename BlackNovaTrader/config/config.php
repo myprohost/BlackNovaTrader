@@ -21,7 +21,7 @@
                                                                 // These are true minutes, no matter to what interval you're running the scheduler script!
                                                                 // The scheduler will auto-adjust, possibly running many of the same events in a single call.
 
-$sched_ticks                = 1;                                // Set this to how often (in minutes) you are running the scheduler script.
+$sched_ticks                = 6;                                // Set this to how often (in minutes) you are running the scheduler script.
 $turns_per_tick             = 6;                                // Update how many turns per tick
 $sched_turns                = 2;                                // New turns rate (also includes towing, xenobe)
 $sched_ports                = 1;                                // How often port production occurs
@@ -41,7 +41,7 @@ $ewd_maxhullsize            = 15;                               // Max hull size
 $sector_max                 = 1000;                             // Number of sectors you'd like your universe to have
 $link_max                   = 10;                               // Maximum number of links in a sector
 $universe_size              = 200;                              // This increases the distance between sectors, which increases the cost of realspace movement
-$game_name                  = 'Default Game Name';              // Please set this to a unique name for your game
+$game_name                  = 'Enter unique game name here';    // Please set this to a unique name for your game
 $release_version            = '0.663';                           // Please do not change this. Doing so will cause problems for the server lists, and setupinfo, and more.
 $fed_max_hull               = 8;                                // The maximum hull size you can have before being towed out of fed space
 $max_ranks                  = 100;                              // The maximum number of ranks displayed on ranking.php
@@ -180,14 +180,19 @@ $max_beacons                = 10;                               // The maximum n
 $max_warpedit               = 10;                               // The maximum number of warpeditors a player can have at one time
 $bounty_all_special         = true;                             // Stop access on all Special Ports when you have a federation bounty on you.
 $bnt_ls                     = false;                            // Should the game register with the list server? (currently not functional)
-$local_number_dec_point     = '.';                              // Localization (regional) settings - soon to be moved into languages
-$local_number_thousands_sep = ',';                              // Localization (regional) settings - soon to be moved into languages
+$local_number_dec_point     = ',';                              // Localization (regional) settings - soon to be moved into languages
+$local_number_thousands_sep = '.';                              // Localization (regional) settings - soon to be moved into languages
 $language                   = 'english';                        // Localization (regional) settings - soon to be moved into languages
-$link_forums                = 'http://forums.blacknova.net';    // Address for the forum link
-$email_server               = 'mail.example.com';               // What mail server (an FQDN DNS name) should emails be sent from?
-$adminpass                  = 'secret';                         // The administrator password
+$link_forums                = 'no forum';                       // Address for the forum link
+$email_server               = 'mailserver.example.com';         // What mail server (an FQDN DNS name) should emails be sent from?
+$adminpass                  = 'Admin-Password';                 // The administrator password
 $admin_mail                 = 'admin@example.com';              // The administrator email address
-$adminname                  = 'Admin Name';                     // The title for the administrator (used when emailing)
+$adminname                  = 'Admin';                          // The title for the administrator (used when emailing)
+$langadminpass              = 'Language-Admin-Password';        // The language administrator password
+$langadmin_mail             = 'admin@example.com';              // The language administrator email address
+$langadminname              = 'Admin';                          // The title for the administrator (used when emailing)
+
+$debug                      = false;                            // set to display some additional debug values (mostly variable values) --> usage: if ($debug) {...}
 
 require "global_includes.php";                                  // A central location for including/requiring other files - Note that we use require because the game cannot function without it.
 ?>

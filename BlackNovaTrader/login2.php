@@ -23,7 +23,7 @@ include "config/config.php";
 $playerfound = false;
 
 $email = $_POST['email'];
-$pass = $_POST['pass'];
+$pass = hash('SHA512', $_POST['pass']);
 
 if ($_POST['email'] != null)
 {
@@ -89,7 +89,12 @@ bigtitle ();
 
 if ($playerfound)
 {
-    if ($playerinfo['password'] == $pass)
+	
+	echo $playerinfo['password'] . " <-- from Database </br>";
+	echo $pass . " <-- from Loginform </br>";
+	echo "</br>";
+    
+	if ($playerinfo['password'] == $pass)
     {
         if ($playerinfo['ship_destroyed'] == "N")
         {

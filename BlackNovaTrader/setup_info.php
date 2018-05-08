@@ -26,11 +26,11 @@ include "setup_info_class.php";
 $setup_info = new SETUPINFO_CLASS();
 
 // Class Test Switches.
-$setup_info->switches['Show_Env_Var']['enabled']    = false;
-$setup_info->switches['Test_Cookie']['enabled']     = false;
-$setup_info->switches['Enable_Database']['enabled'] = false;
-$setup_info->switches['Display_Patches']['enabled'] = false;
-$setup_info->switches['Display_Errors']['enabled']  = false;
+$setup_info->switches['Show_Env_Var']['enabled']    = true;
+$setup_info->switches['Test_Cookie']['enabled']     = true;
+$setup_info->switches['Enable_Database']['enabled'] = true;
+$setup_info->switches['Display_Patches']['enabled'] = true;
+$setup_info->switches['Display_Errors']['enabled']  = true;
 
 $setup_info->testcookies();
 $setup_info->initDB();

@@ -45,6 +45,7 @@ if ($account_creation_closed)
 
 # Get the user supplied post vars.
 $username  = null;
+$password  = null;
 $shipname  = null;
 $character = null;
 if (array_key_exists('character', $_POST))
@@ -60,6 +61,11 @@ if (array_key_exists('shipname', $_POST))
 if (array_key_exists('username', $_POST))
 {
     $username   = $_POST['username'];
+}
+
+if (array_key_exists('password', $_POST))
+{
+    $password   = $_POST['password'];
 }
 
 if (array_key_exists('lang', $_POST))
@@ -135,6 +141,9 @@ if ($flag == 0)
             $makepass .= sprintf("%s", $syllable_array[mt_rand ()%62]);
         }
     }
+	
+	$makepasshash = hash('SHA512', $password);
+	
     $stamp=date("Y-m-d H:i:s");
     $query = $db->Execute("SELECT MAX(turns_used + turns) AS mturns FROM {$db->prefix}ships");
     db_op_result ($db, $query, __LINE__, __FILE__, $db_logging);
@@ -148,7 +157,7 @@ if ($flag == 0)
     }
 
     $result2 = $db->Execute("INSERT INTO {$db->prefix}ships (ship_name, ship_destroyed, character_name, password, email, armor_pts, credits, ship_energy, ship_fighters, turns, on_planet, dev_warpedit, dev_genesis, dev_beacon, dev_emerwarp, dev_escapepod, dev_fuelscoop, dev_minedeflector, last_login, ip_address, trade_colonists, trade_fighters, trade_torps, trade_energy, cleared_defences, lang, dev_lssd)
-                             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", array ($shipname, 'N', $character, $makepass, $username, $start_armor, $start_credits, $start_energy, $start_fighters, $mturns, 'N', $start_editors, $start_genesis, $start_beacon, $start_emerwarp, $escape, $scoop, $start_minedeflectors, $stamp, $ip, 'Y', 'N', 'N', 'Y', NULL, $lang, $start_lssd));
+                             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", array ($shipname, 'N', $character, $makepasshash, $username, $start_armor, $start_credits, $start_energy, $start_fighters, $mturns, 'N', $start_editors, $start_genesis, $start_beacon, $start_emerwarp, $escape, $scoop, $start_minedeflectors, $stamp, $ip, 'Y', 'N', 'N', 'Y', NULL, $lang, $start_lssd));
     db_op_result ($db, $result2, __LINE__, __FILE__, $db_logging);
 
     if (!$result2)
@@ -163,13 +172,13 @@ if ($flag == 0)
         $shipid = $result2->fields;
 
         // To do: build a bit better "new player" message
-        $l_new_message = str_replace("[pass]", $makepass, $l_new_message);
+        $l_new_message = str_replace("[pass]", $password, $l_new_message);
         $l_new_message = str_replace("[ip]", $ip, $l_new_message);
 
         # Some reason \r\n is broken, so replace them now.
         $l_new_message = str_replace('\r\n', "\r\n", $l_new_message);
 
-        $link_to_game = "http://";
+        $link_to_game = "https://";
         $link_to_game .= ltrim($gamedomain,".");// Trim off the leading . if any
         //$link_to_game .= str_replace($_SERVER['DOCUMENT_ROOT'],"",dirname(__FILE__));
         $link_to_game .= $gamepath;
@@ -184,7 +193,7 @@ if ($flag == 0)
 
         if ($display_password)
         {
-            echo $l_new_pwis . " " . $makepass . "<br><br>";
+            echo $l_new_pwis . " " . $password . "<br><br>";
         }
 
         $l_new_pwsent=str_replace("[username]", $_POST['username'], $l_new_pwsent);
