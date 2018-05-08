@@ -44,9 +44,9 @@ $account = $result->fields;
 <center>
 <img src="images/div1.png" alt="">
 <div style="width:600px; max-width:600px;" class="igb">
-<table style="width:600px; height:350px;" border=0>
+<table style="width:600px; height: 350px; border: none;">
 <tr><td style="background-image:URL(images/igbscreen.png); background-repeat:no-repeat;" align="center">
-<table style="width:550px; height:300px;" border=0>
+<table style="width: 550px; height: 300px; border: none;">
 
 <?php
 
